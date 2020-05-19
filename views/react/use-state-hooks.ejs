@@ -1,0 +1,37 @@
+<%- include('../includes/header.ejs') %>
+<div class="stackedit__html"><h1 id="react-usestate-hooks">React useState Hooks</h1>
+    <h3 id="what-is-a-hook"><strong>What is a Hook?</strong></h3>
+    <p>A Hook is a special function that lets you <strong>hook into</strong> React features. For example, <code>useState</code> is a Hook that lets you add React state to function components. We’ll learn other Hooks later.</p>
+    <h3 id="when-would-i-use-a-hook"><strong>When would I use a Hook?</strong></h3>
+    <p>If you write a function component and realize you need to add some state to it, previously you had to convert it to a class. Now you can use a Hook inside the existing function component. We’re going to do that right now!</p>
+    <h3 id="declaring-a-state-variable"><strong>Declaring a State Variable</strong></h3>
+    <pre><code>// Declare a new state variable, which we'll call "count"  const 
+    </code></pre>
+    <p><code>[count, setCount] = useState(0);</code></p>
+    <h3 id="what-does-calling--usestate--do"><strong>What does calling  <code>useState</code>  do?</strong></h3>
+    <p>It declares a “state variable”. Our variable is called <code>count</code> but we could call it anything else, like <code>banana</code>. This is a way to “preserve” some values between the function calls — <code>useState</code> is a new way to use the exact same capabilities that <code>this.state</code> provides in a class. Normally, variables “disappear” when the function exits but state variables are preserved by React.</p>
+    <h3 id="what-do-we-pass-to--usestate--as-an-argument"><strong>What do we pass to  <code>useState</code>  as an argument?</strong></h3>
+    <p>The only argument to the <code>useState()</code> Hook is the initial state. Unlike with classes, the state doesn’t have to be an object. We can keep a number or a string if that’s all we need. In our example, we just want a number for how many times the user clicked, so pass <code>0</code> as initial state for our variable. (If we wanted to store two different values in state, we would call <code>useState()</code> twice.)</p>
+    <h3 id="what-does--usestate--return"><strong>What does  <code>useState</code>  return?</strong></h3>
+    <p>It returns a pair of values: the current state and a function that updates it. This is why we write <code>const [count, setCount] = useState()</code>. This is similar to <code>this.state.count</code> and <code>this.setState</code> in a class, except you get them in a pair.</p>
+    <h3 id="rule-of-usestate-hook">Rule of useState hook</h3>
+    <ul>
+    <li><strong>Only call hooks at the top level</strong> -<br>
+    <strong>Don’t call Hooks inside loops, conditions, or nested functions.</strong>  Instead, always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That’s what allows React to correctly preserve the state of Hooks between multiple  <code>useState</code>  and  <code>useEffect</code>  calls. (If you’re curious, we’ll explain this in depth  <a href="https://reactjs.org/docs/hooks-rules.html#explanation">below</a>.)</li>
+    <li><strong>Only call hooks from react functions</strong>-<br>
+    <strong>Don’t call Hooks from regular JavaScript functions.</strong>  Instead, you can:<br>
+    ✅ Call Hooks from React function components.<br>
+    ✅ Call Hooks from custom Hooks (we’ll learn about them  <a href="https://reactjs.org/docs/hooks-custom.html">on the next page</a>).</li>
+    </ul>
+    <p>By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.</p>
+    <h3 id="summary">Summary</h3>
+    <ul>
+    <li>The useState hooks lets you add state to the functional component.</li>
+    <li>In classes, the state is always an object but with useState hooks state doesn’t have to be an Object.</li>
+    <li>The useState hook return an array with two element.The first element is the current value of state, and second element is a state setter function.</li>
+    <li>When you call the state setter, after that component is re-render.</li>
+    <li>New state value depends on the previous state value? You can pass the function to the setter function <code>setCount((preCount =&gt; preCount + 1))</code>.</li>
+    <li>When dealing with object or arrays, always make sure to spread your state variable and then call setter function <code>setItems([...items, {new object}])</code>.</li>
+    </ul>
+</div>
+<%- include('../includes/footer.ejs') %>
